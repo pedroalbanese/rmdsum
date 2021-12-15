@@ -1,4 +1,4 @@
-# SM3SUM(2)
+# RMDSUM
 [![ISC License](http://img.shields.io/badge/license-ISC-blue.svg)](https://github.com/pedroalbanese/rmdsum/blob/master/LICENSE.md) 
 [![GoDoc](https://godoc.org/github.com/pedroalbanese/rmdsum?status.png)](http://godoc.org/github.com/pedroalbanese/rmdsum)
 [![Go Report Card](https://goreportcard.com/badge/github.com/pedroalbanese/rmdsum)](https://goreportcard.com/report/github.com/pedroalbanese/rmdsum)
