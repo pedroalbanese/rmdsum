@@ -7,11 +7,13 @@
 ### RIPEMD Recursive Hasher (ISO/IEC 10118-3:2004)
 <PRE>
 Usage of rmdsum:
-rmdsum [-v] [-c <hash.rmd>] [-r] <file.ext>
+rmdsum [-v] [-b N] [-c <hash.ext>] [-r] <file.ext>
+  -b int
+        Bits: 128, 160, 256 and 320. (default 160)
   -c string
         Check hashsum file.
   -r    Process directories recursively.
-  -v    Verbose mode. (for CHECK command)</PRE>
+  -v    Verbose mode. (The exit code is always 0 in this mode)</PRE>
   
 ### Examples:
 
