@@ -7,7 +7,7 @@
 ### RIPEMD Recursive Hasher (ISO/IEC 10118-3:2004)
 <PRE>
 Usage of rmdsum:
-rmdsum [-v] [-b N] [-c <hash.ext>] [-r] <file.ext>
+rmdsum [-v] [-b N] [-c &lt;hash.ext&gt;] [-r] &lt;file.ext&gt;
   -b int
         Bits: 128, 160, 256 and 320. (default 160)
   -c string
