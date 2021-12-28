@@ -1,5 +1,6 @@
 # RMDSUM
 [![ISC License](http://img.shields.io/badge/license-ISC-blue.svg)](https://github.com/pedroalbanese/rmdsum/blob/master/LICENSE.md) 
+[![GitHub downloads](https://img.shields.io/github/downloads/pedroalbanese/gosttk/total.svg?logo=github&logoColor=white)](https://github.com/pedroalbanese/gosttk/releases)
 [![GoDoc](https://godoc.org/github.com/pedroalbanese/rmdsum?status.png)](http://godoc.org/github.com/pedroalbanese/rmdsum)
 [![Go Report Card](https://goreportcard.com/badge/github.com/pedroalbanese/rmdsum)](https://goreportcard.com/report/github.com/pedroalbanese/rmdsum)
 [![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/pedroalbanese/rmdsum)](https://golang.org)
