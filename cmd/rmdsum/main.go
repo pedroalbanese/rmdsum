@@ -28,8 +28,9 @@ func main() {
 	if (len(os.Args) < 2) || (*bits != 128 && *bits != 160 && *bits != 256 && *bits != 320) {
 		fmt.Fprintln(os.Stderr, "RMDSUM Copyright (c) 2020-2021 ALBANESE Research Lab")
 		fmt.Fprintln(os.Stderr, "ISO/IEC 10118-3 RIPEMD Recursive Hasher written in Go\n")
-		fmt.Println("Usage of", os.Args[0]+":")
-		fmt.Printf("%s [-v] [-b N] [-c <hash.ext>] [-r] <file.ext>\n", os.Args[0])
+		fmt.Fprintln(os.Stderr, "Usage of", os.Args[0]+":")
+		fmt.Fprintf(os.Stderr, "%s [-v] [-b N] [-c <hash.lsh>] [-r] <file.ext>\n", os.Args[0])
+
 		flag.PrintDefaults()
 		os.Exit(1)
 	}
