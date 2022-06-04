@@ -13,8 +13,7 @@ rmdsum [-v] [-b N] [-c &lt;hash.ext&gt;] [-r] &lt;file.ext&gt;
         Bits: 128, 160, 256 and 320. (default 160)
   -c string
         Check hashsum file.
-  -r    Process directories recursively.
-  -v    Verbose mode. (The exit code is always 0 in this mode)</PRE>
+  -r    Process directories recursively.</PRE>
   
 ### Examples:
 
@@ -26,11 +25,12 @@ $ ./rmdsum [-r] "*.*" > hash.txt
 
 #### Check hashsum file:
 ```sh
-$ ./rmdsum [-v] -c hash.txt
+$ ./rmdsum -c hash.txt
+$ echo $?
 ```
 ##### Exit code is always 0 in verbose mode. 
 
 ## License
 
 This project is licensed under the ISC License.
-##### Copyright (c) 2020-2021 Pedro F. Albanese - ALBANESE Research Lab.
+##### Copyright (c) 2020-2022 Pedro F. Albanese - ALBANESE Research Lab.
