@@ -21,14 +21,11 @@ rmdsum [-v] [-b N] [-c &lt;hash.ext&gt;] [-r] &lt;file.ext&gt;
 ```sh
 $ ./rmdsum [-r] "*.*" > hash.txt
 ```
-##### Always works in binary mode. 
-
 #### Check hashsum file:
 ```sh
 $ ./rmdsum -c hash.txt
 $ echo $?
 ```
-##### Exit code is always 0 in verbose mode. 
 
 ## License
 
