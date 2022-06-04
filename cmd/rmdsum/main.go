@@ -19,18 +19,16 @@ var (
 	bits      = flag.Int("b", 160, "Bits: 128, 160, 256 and 320.")
 	check     = flag.String("c", "", "Check hashsum file.")
 	recursive = flag.Bool("r", false, "Process directories recursively.")
-	verbose   = flag.Bool("v", false, "Verbose mode. (The exit code is always 0 in this mode)")
 )
 
 func main() {
 	flag.Parse()
 
 	if (len(os.Args) < 2) || (*bits != 128 && *bits != 160 && *bits != 256 && *bits != 320) {
-		fmt.Fprintln(os.Stderr, "RMDSUM Copyright (c) 2020-2021 ALBANESE Research Lab")
+		fmt.Fprintln(os.Stderr, "RMDSUM Copyright (c) 2020-2022 ALBANESE Research Lab")
 		fmt.Fprintln(os.Stderr, "ISO/IEC 10118-3 RIPEMD Recursive Hasher written in Go\n")
 		fmt.Fprintln(os.Stderr, "Usage of", os.Args[0]+":")
-		fmt.Fprintf(os.Stderr, "%s [-v] [-b N] [-c <hash.rmd>] [-r] <file.ext>\n", os.Args[0])
-
+		fmt.Fprintf(os.Stderr, "%s [-c <hash.rmd>] [-b N] [-r] <file.ext>\n", os.Args[0])
 		flag.PrintDefaults()
 		os.Exit(1)
 	}
@@ -152,17 +150,19 @@ func main() {
 		for scanner.Scan() {
 			txtlines = append(txtlines, scanner.Text())
 		}
+
+		var exit int
 		for _, eachline := range txtlines {
 			lines := strings.Split(string(eachline), " *")
 			if strings.Contains(string(eachline), " *") {
 				var h hash.Hash
-				if *bits == 128 {
+				if len(lines[0])*4 == 128 {
 					h = ripemd.New128()
-				} else if *bits == 160 {
+				} else if len(lines[0])*4 == 160 {
 					h = ripemd.New160()
-				} else if *bits == 256 {
+				} else if len(lines[0])*4 == 256 {
 					h = ripemd.New256()
-				} else if *bits == 320 {
+				} else if len(lines[0])*4 == 320 {
 					h = ripemd.New320()
 				}
 				_, err := os.Stat(lines[1])
@@ -174,26 +174,18 @@ func main() {
 					io.Copy(h, f)
 					f.Close()
 
-					if *verbose {
-						if hex.EncodeToString(h.Sum(nil)) == lines[0] {
-							fmt.Println(lines[1]+"\t", "OK")
-						} else {
-							fmt.Println(lines[1]+"\t", "FAILED")
-						}
+					if hex.EncodeToString(h.Sum(nil)) == lines[0] {
+						fmt.Println(lines[1]+"\t", "OK")
 					} else {
-						if hex.EncodeToString(h.Sum(nil)) == lines[0] {
-						} else {
-							os.Exit(1)
-						}
+						fmt.Println(lines[1]+"\t", "FAILED")
+						exit = 1
 					}
 				} else {
-					if *verbose {
-						fmt.Println(lines[1]+"\t", "Not found!")
-					} else {
-						os.Exit(1)
-					}
+					fmt.Println(lines[1]+"\t", "Not found!")
+					exit = 1
 				}
 			}
 		}
+		os.Exit(exit)
 	}
 }
